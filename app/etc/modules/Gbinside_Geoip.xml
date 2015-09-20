@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Gbinside_Geoip>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Core/>
+
+            </depends>
+        </Gbinside_Geoip>
+    </modules>
+</config>

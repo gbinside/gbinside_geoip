@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Gbinside_Geoip>
+            <version>0.1.0</version>
+        </Gbinside_Geoip>
+    </modules>
+    <global>
+        <models>
+            <gbgeoip>
+                <class>Gbinside_Geoip_Model</class>
+                <resourceModel>gbgeoip_resource</resourceModel>
+            </gbgeoip>
+            <gbgeoip_resource>
+                <class>Gbinside_Geoip_Model_Resource</class>
+                <entities>
+                    <cache>
+                        <table>gbgeoip_cache</table>
+                    </cache>
+                </entities>
+            </gbgeoip_resource>
+        </models>
+        <blocks>
+            <gbgeoip>
+                <class>Gbinside_Geoip_Block</class>
+            </gbgeoip>
+        </blocks>
+        <helpers>
+            <gbgeoip>
+                <class>Gbinside_Geoip_Helper</class>
+            </gbgeoip>
+        </helpers>
+        <resources>
+            <gbgeoip_setup>
+                <setup>
+                    <module>Gbinside_Geoip</module>
+                </setup>
+            </gbgeoip_setup>
+        </resources>
+    </global>
+    <frontend>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <gbinside_geoip>
+                        <type>singleton</type>
+                        <class>gbgeoip/observer</class>
+                        <method>controllerActionPredispatch</method>
+                    </gbinside_geoip>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </frontend>
+    <default>
+        <system>
+            <gbgeoip>
+                <cookie_lifetime>0</cookie_lifetime>
+                <user_agents>PayPal IPN
+Bingbot
+Adidxbot
+MSNBot
+BingPreview
+Googlebot
+YahooSeeker
+Slurp
+Dotbot
+facebookexternalhit</user_agents>
+            </gbgeoip>
+        </system>
+    </default>
+</config>
