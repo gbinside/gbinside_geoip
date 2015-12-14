@@ -38,6 +38,27 @@
             </gbgeoip_setup>
         </resources>
     </global>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <gbgeoip translate="title" module="gbgeoip">
+                                            <label>Gbinside Geoip</label>
+                                        </gbgeoip>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
     <frontend>
         <events>
             <controller_action_predispatch>
@@ -52,10 +73,10 @@
         </events>
     </frontend>
     <default>
-        <system>
-            <gbgeoip>
+        <gbgeoip>
+            <settings>
                 <cookie_lifetime>0</cookie_lifetime>
-                <user_agents>PayPal IPN
+                <user_agents><![CDATA[PayPal IPN
 Bingbot
 Adidxbot
 MSNBot
@@ -64,8 +85,8 @@ Googlebot
 YahooSeeker
 Slurp
 Dotbot
-facebookexternalhit</user_agents>
-            </gbgeoip>
-        </system>
+facebookexternalhit]]></user_agents>
+            </settings>
+        </gbgeoip>
     </default>
 </config>

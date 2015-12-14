@@ -1,15 +1,29 @@
 <?xml version="1.0"?>
 <config>
+    <tabs>
+        <gbinside translate="label" module="gbgeoip">
+            <label>Gbinside</label>
+            <sort_order>900</sort_order>
+        </gbinside>
+    </tabs>
     <sections>
-        <system>
+        <gbgeoip translate="label" module="gbgeoip">
+            <label>Gbinside Geoip</label>
+            <tab>gbinside</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>995</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
             <groups>
-                <gbgeoip translate="label" module="adminnotification">
-                    <label>GB Geoip</label>
+                <settings translate="label" module="gbgeoip">
+                    <label>Settings</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>250</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>0</show_in_website>
                     <show_in_store>0</show_in_store>
+                    <expanded>1</expanded>
                     <fields>
                         <enabled translate="label">
                             <label>Enable GB Geoip Redirect</label>
@@ -31,6 +45,7 @@
                                 <enabled>1</enabled>
                             </depends>
                             <comment>If 0, the cookie will be cleared when the browser will be closed.</comment>
+                            <frontend_class>validate-number</frontend_class>
                         </cookie_lifetime>
                         <user_agents>
                             <label>User Agents</label>
@@ -45,8 +60,8 @@
                             <comment>User Agents to exclude from redirect.</comment>
                         </user_agents>
                     </fields>
-                </gbgeoip>
+                </settings>
             </groups>
-        </system>
+        </gbgeoip>
     </sections>
 </config>

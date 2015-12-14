@@ -8,10 +8,18 @@ class Gbinside_Geoip_Model_Observer
 {
     const GEOIP_COOKIE = 'gbgeoipdone';
 
+    const GBGEOIP_SETTINGS = 'gbgeoip/settings';
+
+    const GBGEOIP_SETTINGS_ENABLED = 'gbgeoip/settings/enabled';
+
+    const GBGEOIP_SETTINGS_COOKIE_LIFETIME = 'gbgeoip/settings/cookie_lifetime';
+
+    const GBGEOIP_SETTINGS_USER_AGENTS = 'gbgeoip/settings/user_agents';
+
     public function controllerActionPredispatch($o)
     {
-        Mage::log('gbgeoip: config => ' . print_r(Mage::getStoreConfig('system/gbgeoip'), true) . PHP_EOL);
-        if (!Mage::getStoreConfigFlag('system/gbgeoip/enabled')) {
+        Mage::log('gbgeoip: config => ' . print_r(Mage::getStoreConfig(self::GBGEOIP_SETTINGS), true) . PHP_EOL);
+        if (!Mage::getStoreConfigFlag(self::GBGEOIP_SETTINGS_ENABLED)) {
             return;
         }
 
@@ -51,7 +59,7 @@ class Gbinside_Geoip_Model_Observer
             Mage::app()->getCookie()->set(
                 self::GEOIP_COOKIE,
                 true,
-                Mage::getStoreConfig('system/gbgeoip/cookie_lifetime')
+                Mage::getStoreConfig(self::GBGEOIP_SETTINGS_COOKIE_LIFETIME)
             );
         }
     }
@@ -65,7 +73,7 @@ class Gbinside_Geoip_Model_Observer
     {
         $cua = Mage::helper('core/http')->getHttpUserAgent();
 
-        $user_agents = preg_split('/\r\n|\r|\n/', Mage::getStoreConfig('system/gbgeoip/user_agents'));
+        $user_agents = preg_split('/\r\n|\r|\n/', Mage::getStoreConfig(self::GBGEOIP_SETTINGS_USER_AGENTS));
         Mage::log('gbgeoip: $user_agents => ' . print_r($user_agents, true) . PHP_EOL);
         Mage::log('gbgeoip: $cua => ' . $cua . PHP_EOL);
 
